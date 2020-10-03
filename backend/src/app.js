@@ -6,15 +6,20 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var walletRouter = require('./routes/wallet');
-var app = express();
+var currencyRouter = require('./routes/currency');
 
+var app = express();
+let router = express.Router()
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/api', walletRouter);
+router.use('/', walletRouter)
+router.use('/', currencyRouter)
+app.use('/api/wallet', router);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,15 +1,19 @@
 const express = require('express')
 const router = new express.Router()
-const mainRouter = new express.Router()
+//const mainRouter = new express.Router()
 const fetch = require('node-fetch');
 const { isDateOlderThan } = require("../helpers/time")
+const currencies = require("./currencies")
 
-router.get('/addresses/:address/balance', async (req, res) => {
+router.get('/addresses/:address/balance/:currency?', async (req, res) => {
     let statusCode = 200
     let rta = {}
     try {
         const URL = `${process.env.ETHERSCAN_ENDPOINT}?module=account&action=balance&address=${req.params.address}&tag=latest&apikey=${process.env.ETHERSCAN_APIKEY}`
         rta = await (await fetch(URL)).json()
+        //Convierto de wai a ether
+        rta.result /= 1000000000000000000
+
         if (rta.status === "0" && rta.message === "NOTOK") {
             statusCode = 404
         }
@@ -17,6 +21,17 @@ router.get('/addresses/:address/balance', async (req, res) => {
         statusCode = 500
         rta = {
             message: err.message()
+        }
+    }
+    if(req.params.currency){
+        const currency = currencies.find(currency => currency.code === req.params.currency)
+        if(!currency){
+            statusCode = 400
+            rta = {
+                error: "Invalid currency"
+            }
+        } else {
+            rta.result *= currency.value
         }
     }
     res.status(statusCode).send(rta)
@@ -35,9 +50,9 @@ router.get('/addresses/:address/old', async (req, res) => {
                 result: false
             }
         } else {
-            const timeSTamp = rta.result[0]["timeStamp"]
+            const timeStamp = rta.result[0]["timeStamp"]
             rta = {
-                result: isDateOlderThan(timeSTamp, 1, 'year')
+                result: isDateOlderThan(timeStamp, 1, 'year')
             }
         }
 
@@ -50,6 +65,6 @@ router.get('/addresses/:address/old', async (req, res) => {
     res.status(statusCode).send(rta)
 })
 
-mainRouter.use('/wallet', router)
+//mainRouter.use('/wallet', router)
 
-module.exports = mainRouter
+module.exports = router

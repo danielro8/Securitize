@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "env-cmd -f ./config/dev.env nodemon ./bin/www"
+    "start": "env-cmd -f ./config/prod.env node ./bin/www",
+    "dev": "env-cmd -f ./config/dev.env nodemon ./bin/www",
+    "test": "env-cmd -f ./config/test.env jest --testEnvironment=node --verbose --forceExit --watchAll --maxWorkers=1"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
