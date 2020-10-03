@@ -1,23 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var walletRouter = require('./routes/wallet');
-var currencyRouter = require('./routes/currency');
+const walletRouter = require('./routes/wallet');
+const currencyRouter = require('./routes/currency');
 
-var app = express();
-let router = express.Router()
+const app = express();
+const router = new express.Router();
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
-router.use('/', walletRouter)
-router.use('/', currencyRouter)
+router.use('/', walletRouter);
+router.use('/', currencyRouter);
 app.use('/api/wallet', router);
 
 // catch 404 and forward to error handler
