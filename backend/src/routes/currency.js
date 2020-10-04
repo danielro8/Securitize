@@ -5,7 +5,6 @@ const currencies = require('./currencies');
 
 
 router.get('/currencies/:currency', async (req, res) => {
-  console.log(currencies);
   const curreny = currencies.find((currency) =>
     currency.code === req.params.currency);
   res.status(curreny ? 200 : 404).send(curreny);
