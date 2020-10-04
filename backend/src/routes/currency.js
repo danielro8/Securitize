@@ -11,6 +11,10 @@ router.get('/currencies/:currency', async (req, res) => {
   res.status(curreny ? 200 : 404).send(curreny);
 });
 
+router.get('/currencies', async (req, res) => {
+  res.status(currencies ? 200 : 404).send(currencies);
+});
+
 router.patch('/currencies/:currency', async (req, res) => {
   let statusCode = 204;
   let rta = {};

@@ -10,6 +10,10 @@ test('Should get a currency', async () => {
     const response = await request(app).get('/api/wallet/currencies/EUR').expect(200)
 })
 
+test('Should get all currencies', async () => {
+    const response = await request(app).get('/api/wallet/currencies').expect(200)
+})
+
 test('Should not  get a currency distint from USD or EUR', async () => {
     const response = await request(app).get('/api/wallet/currencies/ARG').expect(404)
 })
