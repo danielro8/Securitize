@@ -6,10 +6,12 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <header className="header" style={{ position: "relative" }}>
+    <header className="header">
       <h1>Challenge para Securitize</h1>
     </header>
-    <App />
+    <div className="container">
+      <App />
+    </div>
     <footer>
       <p>Coyright &copy;2020 Daniel Edmundo Rodríguez López Serra</p>
     </footer>

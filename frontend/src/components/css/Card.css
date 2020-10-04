@@ -1,0 +1,23 @@
+.card{
+    max-width: 100%;
+    height: 100px;
+    background-color: #cce7e8;
+}
+.card .edit-icon{
+    position: absolute;
+    right: 5px;
+    top: 4px;
+    color: blue;
+}
+.card .cancel-icon{
+    position: absolute;
+    right: 30px;
+    top: 4px;
+    color: red;
+}
+.card .confirm-icon{
+    position: absolute;
+    right: 5px;
+    top: 4px;
+    color: green;
+}
