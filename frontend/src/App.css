@@ -21,10 +21,10 @@
 .container{
   margin-top: 10px;
 }
-select{
+select, input.currency{
   max-width: 200px; 
   margin: 0 auto;
-  margin-top: 5px;
+  margin-top: 18px;
 }
 .balance{
   padding: 20px;
