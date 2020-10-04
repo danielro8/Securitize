@@ -60,7 +60,7 @@ const App = () => {
           <Card editable={false} />
         </div>
         <div className="col">
-          <Card editable={false} />
+          <Card editable={true} />
         </div>
       </div>
     </React.Fragment>

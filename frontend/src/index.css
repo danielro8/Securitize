@@ -22,11 +22,11 @@ header{
   background-color: lightblue
 }
 footer{
-  position: fixed;
-  bottom: 0;
-  display: flex; 
+  /*display: flex; 
   align-items: center;
-  justify-content: center; 
+  justify-content: center;*/
+  line-height: 1em;
   width: 100%;
   text-align: center;
+  padding-top: 50px;
 }
