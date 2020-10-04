@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import "./css/Card.css"
 
-const Card = ({editable}) => {
+const Card = ({editable, content}) => {
     const [edited, setEdited] = useState(false)
     const handleEditClick = () => {
         setEdited(true)
@@ -19,6 +19,7 @@ const Card = ({editable}) => {
             {editable && !edited ? <i className="fa fa-pencil-square-o edit-icon" aria-hidden="true" onClick={handleEditClick}></i> : <></>}
             {editable && edited ? <><i class="fa fa-times cancel-icon" onClick={handleCancelClick}></i>
              <i class="fa fa-check confirm-icon" onClick={handleConfirmClick}></i></> : <></>}
+             {content}
         </div>
     );
 }

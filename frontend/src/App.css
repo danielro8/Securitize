@@ -21,3 +21,11 @@
 .container{
   margin-top: 10px;
 }
+select{
+  max-width: 200px; 
+  margin: 0 auto;
+  margin-top: 5px;
+}
+.balance{
+  padding: 20px;
+}
