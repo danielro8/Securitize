@@ -21,8 +21,14 @@ Se encuentra bajo la carpeta "backend"
  **Eslint**
 
  Como herramienta de calidad de código
+
+ **Docker**
 Utilizo también Docker como herramienta de container y despliegue, habiendo un archivo Dockerfile en la carpeta raíz de cada proyecto y un docker-compose.yaml en la carpeta securitize para levantar ambos proyectos
 
+***Entornos**
+Se incluyen variables de entorno tanto dev,testing
+como producción, en el frontend y en el backend.
+Se utilizan con el módulo ENV-CMD.
 
 **API**
 
