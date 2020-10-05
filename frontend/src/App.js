@@ -8,6 +8,7 @@ import { numberWithCommas } from "./helpers"
 import Card from "./components/Card"
 
 const App = () => {
+  console.log('REACT_APP_BACKEND_ENDPOINT', process.env.REACT_APP_BACKEND_ENDPOINT)
   const searchStr = useRef(null)
   const balanceCurrencyRef = useRef("ETH")
   const currencyRef = useRef()

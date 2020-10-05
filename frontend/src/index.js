@@ -9,7 +9,7 @@ ReactDOM.render(
     <header className="header">
       <h1>Challenge para Securitize</h1>
     </header>
-    <div className="container">
+    <div className="container main">
       <App />
     </div>
     <footer>
